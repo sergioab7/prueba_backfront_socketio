@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom';
+import { Waypoints } from "lucide-react";
 
 
 
@@ -8,7 +9,7 @@ export const Header = () => {
     <nav>
         <ul>
             <li>
-                <p>Chatting.io</p>
+                <p><Link to="/"><Waypoints size={"23px"}/></Link></p>
             </li>
             <li>
                 <div className="registro">

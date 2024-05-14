@@ -124,3 +124,38 @@ body{
   color: #fff;
 }
 
+/* Dashboard */
+.dashboard-head{
+  display:flex;
+  justify-content: center;
+}
+
+.card{
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.card-components{
+  width:220px;
+  padding:5px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:#1758c2;
+  border:1px solid rgb(38, 102, 155);
+  cursor:pointer;
+  margin:2px;
+  border-radius:15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card .number,
+.card .h1{
+  color:white;
+  font-weight: bold;
+}
+
+.card-components:focus{
+  background-color: red;
+}

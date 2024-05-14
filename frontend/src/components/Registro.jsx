@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export const Registro = () => {
 
+    const URL = 'http://localhost:4001/api/auth/registro';
     const [usuario, setUsuario] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState(false);
 
-    const handleForm = (e) => {
+    const handleForm = async(e) => {
         e.preventDefault();
 
         if(usuario == "" && password == "" && email == ""){
@@ -15,11 +16,24 @@ export const Registro = () => {
         }else{
             setError(false);
             const usuarioRegistrado = {
-                user:usuario,
-                pass:password,
-                email:email
+                usuario:usuario,
+                email:email,
+                password:password,
             }
-            console.log(usuarioRegistrado);
+            console.log(JSON.stringify(usuarioRegistrado));
+            fetch(URL, {
+                method: "POST",
+                "Content-Type": "application/json",
+                body: JSON.stringify(usuarioRegistrado)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en el servidor');
+                }
+                return response.json();
+            })
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
         }
 
     }

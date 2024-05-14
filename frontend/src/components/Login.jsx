@@ -5,7 +5,7 @@ export const Login = () => {
     const navigate = useNavigate();
 
     const loginWeb = () => {
-        navigate("/dashboard");
+        navigate("/");
     }
   return (
     <div>
