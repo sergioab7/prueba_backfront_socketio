@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export const Registro = () => {
+    const navigate = useNavigate();
 
-    const URL = 'http://localhost:4001/api/auth/registro';
+
     const [usuario, setUsuario] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -10,6 +13,7 @@ export const Registro = () => {
 
     const handleForm = async(e) => {
         e.preventDefault();
+
 
         if(usuario == "" && password == "" && email == ""){
             setError(true);
@@ -21,19 +25,20 @@ export const Registro = () => {
                 password:password,
             }
             console.log(JSON.stringify(usuarioRegistrado));
-            fetch(URL, {
-                method: "POST",
-                "Content-Type": "application/json",
-                body: JSON.stringify(usuarioRegistrado)
+            fetch('http://localhost:4001/api/auth/registro', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(usuarioRegistrado),
+                credentials: 'include' 
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en el servidor');
-                }
-                return response.json();
+            .then(response => response.json())
+            .then(data => {
+                console.log("Datos:" + data);
+                navigate("/login");
             })
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            .catch((error) => console.error('Error:', error));
         }
 
     }
