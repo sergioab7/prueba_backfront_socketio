@@ -13,10 +13,10 @@ import DashboardRoute from "./src/routes/Dashboard.routes.js";
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173', // Asegúrate de que este sea el puerto correcto
-    credentials: true, // Esto es necesario si estás utilizando cookies
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Especifica los métodos permitidos
-    allowedHeaders: ['Content-Type', 'Authorization'], // Puedes especificar los encabezados permitidos
+    origin: 'http://localhost:5173', 
+    credentials: true, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
 }));
 app.use(express.json());
 const server = createServer(app);
