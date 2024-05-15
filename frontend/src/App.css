@@ -53,7 +53,7 @@ body{
 
 .main{
   width:45%;
-  height:600px;
+  height:500px;
   padding:6px;
   margin:0 auto;
   background-color: white;
@@ -124,6 +124,37 @@ body{
   color: #fff;
 }
 
+.header-usuario-autenticado{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+
+}
+
+.header-usuario-autenticado button{
+  width:30px;
+  background-color: transparent;
+  cursor: pointer;
+  border:0;
+  margin-top:15px;
+}
+
+.mostrar{
+  position:absolute;
+  top:40px;
+  display:flex;
+  flex-direction: column;
+  width:100px;
+  height:100px;
+  border-radius:10px;
+  background-color:rgb(165, 152, 152);
+}
+
+.oculto{
+  display:none;
+}
+
 /* Dashboard */
 .dashboard-head{
   display:flex;
@@ -142,12 +173,18 @@ body{
   display:flex;
   flex-direction: column;
   align-items: center;
-  background-color:#1758c2;
-  border:1px solid rgb(38, 102, 155);
+  background-color:#578de6;
   cursor:pointer;
   margin:2px;
   border-radius:15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-components button{
+  border:0;
+  padding:5px;
+  border-radius:5px;
+  cursor:pointer;
 }
 
 .card .number,
@@ -158,4 +195,58 @@ body{
 
 .card-components:focus{
   background-color: red;
+}
+
+
+/* Salas*/
+.cabecera{
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cabecera__back{
+  display:flex;
+  align-items: center;
+  cursor:pointer;
+}
+
+.chat{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.generalChat{
+  display:flex;
+  justify-content: space-around;
+}
+
+.vistaChat{
+  width:70%;
+  height:380px;
+  border-radius:10px;
+  background-color:rgb(202, 190, 190);
+}
+
+.usuariosConectados{
+  width:28%;
+  height:380px;
+  border-radius:3px;
+  background-color:rgb(98, 151, 182);
+  border:1px solid rgb(56, 144, 202);
+}
+
+.usuariosOnP{
+  display:flex;
+  justify-content: center;
+  font-size: 19px;
+  color:white;
+}
+
+.chat > .textoChat{
+  margin-top:10px;
+  display:flex;
+  justify-content: center;
 }

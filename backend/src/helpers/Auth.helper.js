@@ -39,9 +39,13 @@ class Auth{
             return "Password incorrecto";
         }
 
-        const token = mijwt(existeUsuario._id);
-
-        return token;
+        
+        const token = await mijwt(existeUsuario._id);
+        console.log("Token:", token);
+        return {
+            usuario:existeUsuario.usuario,
+            token
+        };
 
 
     }

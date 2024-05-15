@@ -24,6 +24,7 @@ export const login = async(req,res) => {
         
         const userLogin = new Auth(email, password);
         const login = await userLogin.login();
+        console.log("Ahora aqui:", login);
     
         if(login==="Email incorrecto"){
             return res.status(400).json({
@@ -42,8 +43,9 @@ export const login = async(req,res) => {
             login
         })
     } catch (error) {
-        return res.status(501).json({
+        return res.status(500).json({
             msg:'[-] Internal Server Error',
+            error
         })
     }
 

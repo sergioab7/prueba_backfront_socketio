@@ -28,10 +28,11 @@ export const Login = () => {
             body:JSON.stringify(loginUsuario)
         }).then(res => res.json())
           .then(data => {
-            localStorage.setItem("token", data.login);
-            navigate("/");
+            localStorage.setItem("token", data.login.token);
+            localStorage.setItem("usuario", data.login.usuario);
+            window.location.reload();
+            navigate("/dashboard");
           })
-        //
     }
   return (
     <div>

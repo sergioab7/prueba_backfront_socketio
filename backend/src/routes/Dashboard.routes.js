@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { login, registro } from "../controllers/Auth.controller.js";
 import { verificarJWT } from "../helpers/verificarToken.js";
 import { salas, usuarios } from "../controllers/Dashboard.controller.js";
 

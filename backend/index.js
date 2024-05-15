@@ -20,23 +20,35 @@ app.use(cors({
 }));
 app.use(express.json());
 const server = createServer(app);
-// const io = new Server(server, {
-//     cors:{
-//         origin:'http://localhost:5174'
-//     }
-// });
+const io = new Server(server, {
+    cors:{
+        origin:'http://localhost:5173'
+    }
+});
 const PORT = process.env.PORT || 4001;
 
 /* conectar bbdd*/
 connection(); 
 
-// io.on("connection", socket => {
-//     console.log(`[+] Usuario: ${socket.id} conectado.`);
+io.on("connection", socket => {
 
-//     io.on("disconnect", () => {
-//         console.log(`[!] Usuario ${socket.id} desconectado.`);
-//     })
-// })
+    socket.on("login", (user) => {
+        console.log(`[+] Usuario: ${user} conectado.`);
+    })
+    socket.on("join_room", (datos) => {
+        console.log(`El usuario: ${datos.user} ha entrado a la sala: ${datos.room}`);
+        socket.join(datos.room);
+    })
+
+    socket.on("send_message_to_room", datos => {
+        console.log(`Mensaje enviado a la sala: ${datos.room} por el usuario: ${datos.user}`);
+
+        io.to(datos.room).emit("received_message", datos.message);
+    })
+    socket.on("disconnect", () => {
+        console.log(`[!] Usuario ${socket.id} desconectado.`);
+    })
+})
 
 
 /* Rutas*/
