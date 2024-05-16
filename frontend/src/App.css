@@ -250,3 +250,15 @@ body{
   display:flex;
   justify-content: center;
 }
+
+
+/*Chat mensajes*/
+.mensajesChat{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mensajesChat .usuarioChat{
+  font-size:16px;
+}

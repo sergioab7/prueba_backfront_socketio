@@ -12,9 +12,10 @@ import { SalaGeneral } from './components/SalaGeneral';
 
 
 function App() {
-
+  const socket = io(`http://localhost:4001`);
   const [usuario,setUsuario] = useState('');
   const [autenticado, setAutenticado]=useState(false);
+  const [listaUsuarios, setListaUsuarios] = useState([]);
 
   const existeToken = () => {
     const token = localStorage.getItem('token');
@@ -30,9 +31,9 @@ function App() {
   useEffect(() => {
     existeToken();
 
-  })
+  },[])
 
-
+ 
 
   return (
     <Router>
@@ -45,8 +46,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/" element={<Inicio />} />
-            <Route path="/sala-general" element={<SalaGeneral usuario={usuario}/>} />
-            <Route path="/dashboard" element={<Dashboard usuario={usuario}/>} />
+            <Route path="/sala-general" element={<SalaGeneral usuario={usuario} socket={socket}/>} />
+            <Route path="/dashboard" element={<Dashboard usuario={usuario} socket={socket} setListaUsuarios={setListaUsuarios}/>} />
           </Routes>
         </div>
       </div>

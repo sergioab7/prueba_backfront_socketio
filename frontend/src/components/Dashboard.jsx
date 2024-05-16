@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Header } from './Header'
 import { Waypoints } from "lucide-react";
-import io from 'socket.io-client';
+
 import { useNavigate } from 'react-router-dom';
 
 
-export const Dashboard = ({usuario}) => {
+export const Dashboard = ({usuario, socket, setListaUsuarios}) => {
 
-  const socket = io(`http://localhost:4001`);
+
   const navigate = useNavigate();
   const [sala, setSala] = useState('');
 
@@ -21,20 +21,22 @@ export const Dashboard = ({usuario}) => {
 
     socket.emit("login", localStorage.getItem("usuario"));
 
-  },[]);
+  },[socket]);
 
   useEffect(() => {
       socket.emit("join_room", {
         user:localStorage.getItem("usuario"),
         room:sala
       });
+
   }, [sala]);
 
   const entrarSala = (e) => {
     const nombre = e.target.parentNode.querySelectorAll("p")[1];
-    setSala(nombre.textContent);
+    setSala(nombre.textContent.toLowerCase().trim());
 
     if(sala.toLowerCase().trim() === "general"){
+      localStorage.setItem("sala", sala);
       navigate("/sala-general")
     }
 

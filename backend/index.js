@@ -36,14 +36,14 @@ io.on("connection", socket => {
         console.log(`[+] Usuario: ${user} conectado.`);
     })
     socket.on("join_room", (datos) => {
-        console.log(`El usuario: ${datos.user} ha entrado a la sala: ${datos.room}`);
         socket.join(datos.room);
+        console.log(`El usuario: ${datos.user} ha entrado a la sala: ${datos.room}`);
     })
 
     socket.on("send_message_to_room", datos => {
-        console.log(`Mensaje enviado a la sala: ${datos.room} por el usuario: ${datos.user}`);
+        console.log(`Mensaje enviado a la sala: ${datos.room} por el usuario: ${datos.user} mensaje: ${datos.message}`);
 
-        io.to(datos.room).emit("received_message", datos.message);
+        socket.to(datos.room).emit("received_message", datos);
     })
     socket.on("disconnect", () => {
         console.log(`[!] Usuario ${socket.id} desconectado.`);
