@@ -53,7 +53,7 @@ body{
 
 .main{
   width:45%;
-  height:500px;
+  height:600px;
   padding:6px;
   margin:0 auto;
   background-color: white;
@@ -225,14 +225,16 @@ body{
 
 .vistaChat{
   width:70%;
-  height:380px;
+  height:440px;
   border-radius:10px;
   background-color:rgb(202, 190, 190);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .usuariosConectados{
   width:28%;
-  height:380px;
+  height:440px;
   border-radius:3px;
   background-color:rgb(98, 151, 182);
   border:1px solid rgb(56, 144, 202);
@@ -254,11 +256,51 @@ body{
 
 /*Chat mensajes*/
 .mensajesChat{
+  width:99%;
   display:flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(175, 145, 145);
+  padding:5px;
+  margin:2px;
+  border-radius:5px;
 }
 
 .mensajesChat .usuarioChat{
   font-size:16px;
+}
+
+.mensajesChat .usuarioChat{
+  font-size:13px;
+  font-weight: bold;
+}
+
+.textoChat input[type="text"]{
+  width:60%;
+  padding:10px;
+  border:0;
+  border-radius:5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.textoChat button{
+  padding:15px;
+  border:0;
+  cursor:pointer;
+  border-radius:10px;
+  background-color: rgb(87, 184, 67);
+  margin:5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.textoChat button:hover{
+  background-color: rgb(65, 122, 54);
+}
+
+#you{
+  background-color: rgb(201, 187, 107) !important;
+}
+
+#other{
+  background-color: rgb(37, 101, 117) !important;
 }
