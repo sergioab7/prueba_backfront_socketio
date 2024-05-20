@@ -49,3 +49,35 @@ export const extraerSalaGeneral = async(req,res) => {
         });
     }
 }
+
+export const extraerSalaJuegos = async(req,res) => {
+    try {
+        const mensajesGeneral = await Sala.find({nombre:'juegos'})
+
+        res.status(200).json({
+            msg:'[+] Datos obtenidos correctamente',
+            mensajesGeneral
+        })
+    } catch (error) {
+        res.status(500).json({ 
+            message: '[-] No se ha podido recuperar los mensajes', 
+            error: error.message 
+        });
+    }
+}
+
+export const extraerSalaNegocios = async(req,res) => {
+    try {
+        const mensajesGeneral = await Sala.find({nombre:'negocios'})
+
+        res.status(200).json({
+            msg:'[+] Datos obtenidos correctamente',
+            mensajesGeneral
+        })
+    } catch (error) {
+        res.status(500).json({ 
+            message: '[-] No se ha podido recuperar los mensajes', 
+            error: error.message 
+        });
+    }
+}

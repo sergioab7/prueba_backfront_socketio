@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 export const verificarJWT = async(req,res,next) => {
     try {
         const token = req.header('authorization')
-        console.log(token);
         if(!token){
             return res.status(400).json({
                 status:'Error',

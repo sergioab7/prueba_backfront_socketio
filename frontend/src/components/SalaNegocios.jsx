@@ -3,9 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronLeft, Send } from 'lucide-react';
 import ScrollToBottom from "react-scroll-to-bottom";
 
-export const SalaGeneral = ({usuario, socket}) => {
+export const SalaNegocios = ({usuario, socket}) => {
 
-    const URL_DATOSGENERAL = 'http://localhost:4001/api/dashboard/sala-general'
+    const URL_DATOSGENERAL = 'http://localhost:4001/api/dashboard/sala-negocios'
     const URL_ENVIAR_DATOS = 'http://localhost:4001/api/dashboard/salas'
 
     const [mensaje, setMensaje] = useState('');
@@ -123,13 +123,13 @@ export const SalaGeneral = ({usuario, socket}) => {
             <div className="cabecera__back" onClick={() => volverDashboard()}>
                 <ChevronLeft size={"60px"} /> Volver
             </div>
-            <h2>General</h2>
+            <h2>Negocios</h2>
             <p>Usuario: {usuario}</p>
         </header>
         <main className="chat">
             <div className="generalChat">
                 <div className="vistaChat">
-                    <ScrollToBottom className="mensajeContenedor">
+                <ScrollToBottom className="mensajeContenedor">
                     {mensajesBBDD.map((message,i) => (
                         <>
                         <div className="mensajesChat" id={usuario === message.mensajes[0].usuario ? "you" : "other"}>

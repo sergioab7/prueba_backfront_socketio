@@ -9,6 +9,8 @@ import { Dashboard } from './components/Dashboard';
 import { Inicio } from './components/Inicio';
 import { useEffect, useState } from 'react';
 import { SalaGeneral } from './components/SalaGeneral';
+import { SalaJuegos } from './components/SalaJuegos';
+import { SalaNegocios } from './components/SalaNegocios';
 
 
 function App() {
@@ -37,7 +39,15 @@ function App() {
 
   return (
     <Router>
+        <div className="bg-indigo-600 px-4 py-2 text-white w-full">
+          <p className="text-center text-sm font-medium">
+            Hecho con &#128155; por
+            <a href="https://github.com/sergioab7" className="inline-block underline"> <span className="p-1">Sergio Andújar</span></a>
+          </p>
+        </div>
       <div className="container">
+
+
         <div className="header">
           <Header autenticado={autenticado}/>
         </div>
@@ -47,6 +57,8 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/" element={<Inicio />} />
             <Route path="/sala-general" element={<SalaGeneral usuario={usuario} socket={socket}/>} />
+            <Route path="/sala-juegos" element={<SalaJuegos usuario={usuario} socket={socket}/>} />
+            <Route path="/sala-negocios" element={<SalaNegocios usuario={usuario} socket={socket}/>} />
             <Route path="/dashboard" element={<Dashboard usuario={usuario} socket={socket} setListaUsuarios={setListaUsuarios}/>} />
           </Routes>
         </div>
