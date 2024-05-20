@@ -38,6 +38,15 @@ export const SalaJuegos = ({usuario, socket}) => {
         navigate("/dashboard");
     }
 
+    function formatTime(minutes) {
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+            return minutes;
+        }else{
+            return minutes;
+        }
+    }
+
     const enviarMensaje = async() => {
         const enviarDatos = {
             user:localStorage.getItem("usuario"),
@@ -46,7 +55,7 @@ export const SalaJuegos = ({usuario, socket}) => {
             time:
             new Date(Date.now()).getHours() +
             ":" +
-            new Date(Date.now()).getMinutes(),
+            formatTime(new Date().getMinutes())
         }
 
         const enviarDataFetch = {
@@ -55,7 +64,7 @@ export const SalaJuegos = ({usuario, socket}) => {
             mensaje:mensaje,
             fecha:new Date(Date.now()).getHours() +
             ":" +
-            new Date(Date.now()).getMinutes()
+            formatTime(new Date().getMinutes())
         }
 
         fetch(URL_ENVIAR_DATOS, {
@@ -170,7 +179,7 @@ export const SalaJuegos = ({usuario, socket}) => {
                     </div>
 
                 </div>
-        </footer>
+            </footer>
 
         </main>
     </div>

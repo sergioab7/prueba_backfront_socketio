@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Header } from './Header'
 import { Waypoints } from "lucide-react";
-
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
+import sonido1 from "../assets/sonido.mp3";
 
 
 export const Dashboard = ({usuario, socket, setListaUsuarios}) => {
@@ -10,6 +11,7 @@ export const Dashboard = ({usuario, socket, setListaUsuarios}) => {
 
   const navigate = useNavigate();
   const [sala, setSala] = useState('');
+  const [sonido] = useSound(sonido1);
 
   const chats_globales = [
     { nombre: "General", descripcion: "¡Habla de todo lo que te apetezca!" },
@@ -38,16 +40,19 @@ export const Dashboard = ({usuario, socket, setListaUsuarios}) => {
 
     if(sala.toLowerCase().trim() === "general"){
       localStorage.setItem("sala", sala);
+      sonido();
       navigate("/sala-general")
     }
 
     if(sala.toLowerCase().trim() === "juegos"){
       localStorage.setItem("sala", sala);
+      sonido();
       navigate("/sala-juegos")
     }
 
     if(sala.toLowerCase().trim() === "negocios"){
       localStorage.setItem("sala", sala);
+      sonido();
       navigate("/sala-negocios")
     }
 

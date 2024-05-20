@@ -38,6 +38,15 @@ export const SalaNegocios = ({usuario, socket}) => {
         navigate("/dashboard");
     }
 
+    function formatTime(minutes) {
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+            return minutes;
+        }else{
+            return minutes;
+        }
+    }
+
     const enviarMensaje = async() => {
         const enviarDatos = {
             user:localStorage.getItem("usuario"),
@@ -46,7 +55,7 @@ export const SalaNegocios = ({usuario, socket}) => {
             time:
             new Date(Date.now()).getHours() +
             ":" +
-            new Date(Date.now()).getMinutes(),
+            formatTime(new Date().getMinutes())
         }
 
         const enviarDataFetch = {
@@ -55,7 +64,7 @@ export const SalaNegocios = ({usuario, socket}) => {
             mensaje:mensaje,
             fecha:new Date(Date.now()).getHours() +
             ":" +
-            new Date(Date.now()).getMinutes()
+            formatTime(new Date().getMinutes())
         }
 
         fetch(URL_ENVIAR_DATOS, {
@@ -157,6 +166,19 @@ export const SalaNegocios = ({usuario, socket}) => {
                 } }/>
                 <button onClick={enviarMensaje}><Send /></button>
             </div>
+            <footer className="bg-white mt-2">
+                <div className="mx-auto max-w-screen-xl px-2 pt-16 sm:px-6 lg:px-4 lg:pt-24">
+                    <div className="text-center">
+                    <h2 className="text-2xl font-extrabold text-gray-900 sm:text-5xl">Sé respetuoso</h2>
+
+                    <p className="mx-auto mt-1 max-w-sm text-gray-500">
+                        Ten respeto por la gente, no insultes ni digas cosas personales
+                    </p>
+
+                    </div>
+
+                </div>
+            </footer>
         </main>
     </div>
   )
