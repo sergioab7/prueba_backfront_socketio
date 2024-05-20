@@ -30,8 +30,8 @@ export const Login = () => {
           .then(data => {
             localStorage.setItem("token", data.login.token);
             localStorage.setItem("usuario", data.login.usuario);
-            window.location.reload();
             navigate("/dashboard");
+            window.location.reload();
           })
     }
   return (
